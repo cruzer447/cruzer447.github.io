@@ -5,6 +5,16 @@ body {
   color: white;
 }
 
+.profile-photo{
+  display: block;
+  width: 200px;
+  height: 200px;
+  border-radius: 50%;
+  margin-bottom: 20px;
+  border: 4px solid white;
+
+}
+
 nav {
   display: flex;
   justify-content: space-between;
