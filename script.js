@@ -1,31 +1,38 @@
-const links = document.querySelectorAll("nav a");
+// Navbar shadow
 
-links.forEach(link => {
+const navbar = document.querySelector("nav");
 
-    link.addEventListener("click", function () {
-
-        links.forEach(l => l.classList.remove("active"));
-
-        this.classList.add("active");
-
-    });
-
+window.addEventListener("scroll", () => {
+    if (window.scrollY > 20) {
+        navbar.classList.add("scrolled");
+    } else {
+        navbar.classList.remove("scrolled");
+    }
 });
+
+// Highlight active navigation link
+
+const sections = document.querySelectorAll("section");
+const links = document.querySelectorAll("nav a");
 
 window.addEventListener("scroll", () => {
 
-    const nav = document.querySelector("nav");
+    let current = "";
 
-    if(window.scrollY > 50){
+    sections.forEach(section => {
+        const top = section.offsetTop - 120;
 
-        nav.style.boxShadow = "0 5px 20px rgba(0,0,0,.4)";
+        if (window.scrollY >= top) {
+            current = section.getAttribute("id");
+        }
+    });
 
-    }
+    links.forEach(link => {
+        link.classList.remove("active");
 
-    else{
-
-        nav.style.boxShadow = "none";
-
-    }
+        if (link.getAttribute("href") === "#" + current) {
+            link.classList.add("active");
+        }
+    });
 
 });
